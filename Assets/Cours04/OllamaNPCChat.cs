@@ -19,6 +19,9 @@ public class OllamaNPCChat : MonoBehaviour
         StartCoroutine(CallOllamaChat(inputField.text));
     }
 
+    public PiperTTS piperTTS;
+
+
     IEnumerator CallOllamaChat(string userMessage)
     {
         responseText.text = "Sending message to NPC...";
@@ -64,6 +67,12 @@ public class OllamaNPCChat : MonoBehaviour
 
             if (npcAnimator != null)
                 StartCoroutine(PlayTalkingAnimation(answer));
+
+            if (piperTTS != null)
+            {
+                piperTTS.Speak(answer);
+            }
+
         }
     }
 
